@@ -20,11 +20,11 @@ module Phase7
     end
 
     def [](key)
-      @value[key]
+      @flash[key]
     end
 
     def []=(key, val)
-      @value[key] = val
+      @flash[key] = val
     end
 
     def now
@@ -34,7 +34,7 @@ module Phase7
     # serialize the hash into json and save in a cookie
     # add to the responses cookies
     def store_session(res)
-      cookie = WEBrick::Cookie.new('_flash_rails_lite_app', @value.to_json)
+      cookie = WEBrick::Cookie.new('_flash_rails_lite_app', @flash.to_json)
       res.cookies << cookie
     end
   end
